@@ -1,3 +1,12 @@
+# react-youtube
+
+React &amp; YouTube API (free edition)
+
+App Mock up:
+APP -> SearchBar
+\ VideoDetail
+\ VideoList -> VideoItem
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
