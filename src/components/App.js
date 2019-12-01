@@ -27,7 +27,10 @@ export class App extends Component {
         // console.log(response); // whole response object
         // response.data.items // the data list of videos relavent in the response
         // this sets the state on the App.js component of the { videos: [] } property
-        this.setState({ videos: response.data.items })
+        this.setState({ 
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
+        })
     }
 
     onVideoSelect = video => {
