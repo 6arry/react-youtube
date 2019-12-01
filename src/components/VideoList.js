@@ -9,7 +9,7 @@ const VideoList = ({ videos, onVideoSelect }) => { // instead of using '= props 
     // Because videos is an array from the App component
     // we can map over the videos array
     const renderedList = videos.map(video => {
-        return <VideoItem video={video} onVideoSelect={onVideoSelect} />
+        return <VideoItem key={video.id.videoId} video={video} onVideoSelect={onVideoSelect} />
     })
 
     return (
