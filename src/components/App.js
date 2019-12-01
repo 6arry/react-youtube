@@ -30,7 +30,7 @@ export class App extends Component {
         this.setState({ videos: response.data.items })
     }
 
-    onVideoSelect = ({ video }) => {
+    onVideoSelect = video => {
         // console.log('From the app!', video)
         this.setState({ selectedVideo: video })
     }
