@@ -40,13 +40,25 @@ export class App extends Component {
             // className ui container, gives the div a left and right margins
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
-                {/* video prop allows the state property { selectedVideo: null } to be
-                passed down to a child component*/}
-                <VideoDetail video={this.state.selectedVideo} />
-                {/* 1. videos prop allows the state property { videos: [] } array to be
-                passed down into the VideoList.js component */}
-                {/* 2. onVideoSelect prop allows the callback method to be passed down into the VideoList.js component */}
-                <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect} />
+                {/* this div wraps all the child div's and puts the grid call to them */}
+                <div className="ui grid">
+                    {/* this div puts all the components into one row */}
+                    <div className="row">
+                        {/* this div is 11 out of 16 columns wide (semantic ui grid) */}
+                        <div className="eleven wide column">
+                            {/* video prop allows the state property { selectedVideo: null } to be
+                            passed down to a child component*/}
+                            <VideoDetail video={this.state.selectedVideo} />
+                        </div>
+                        {/* this div is 5 out of 16 columns wide (semantic ui grid) */}
+                        <div className="five wide column">
+                            {/* 1. videos prop allows the state property { videos: [] } array to be
+                            passed down into the VideoList.js component */}
+                            {/* 2. onVideoSelect prop allows the callback method to be passed down into the VideoList.js component */}
+                            <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect} />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
