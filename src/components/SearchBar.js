@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import './SearchBar.css';
+import React, { Component } from 'react';
 
 export class SearchBar extends Component {
     // initialize state on the component

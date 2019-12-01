@@ -3,7 +3,9 @@ import React from 'react';
 const VideoDetail = ({ video }) => {
     // this renders on the page if there is no video. ({ selectVideo: null })
     if (!video) {
-        return <div>Loading...</div>
+        return (
+            <div>Loading...</div>
+        )
     }
 
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`

@@ -12,6 +12,12 @@ export class App extends Component {
     // Initializing state
     state = { videos: [], selectedVideo: null };
 
+    // after the App component finishes this will invoke the onTermSubmit method
+    // and pass in the 'funny dogs' term
+    componentDidMount() {
+        this.onTermSubmit('funny dogs')
+    }
+
     // Callback method anytime someone submits the SearchBar <form>
     // this allows the data to be passed to SearchBar.js to the 
     // onFormSubmit method inside of the class SearchBar component
