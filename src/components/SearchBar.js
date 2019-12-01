@@ -19,6 +19,7 @@ export class SearchBar extends Component {
         e.preventDefault();
 
         // Callback from parent component
+        // onFormSubmit is a prop inside of App.js on <SearchBar />
         this.props.onFormSubmit(this.state.term)
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
+import VideoList from '../components/VideoList';
 
 // I made this a "class" based component because it is going to contain
 // All or most of the state of the app
@@ -10,8 +11,12 @@ export class App extends Component {
     // Initializing state
     state = { videos: [] }; //
 
+    // Callback method anytime someone submits the SearchBar <form>
+    // this allows the data to be passed to SearchBar.js to the 
+    // onFormSubmit method inside of the class SearchBar component
     onTermSubmit = async term => {
         // console.log(term);
+        // The term will be passed down through the props system
         const response = await youtube.get('/search', {
             params: {
                 q: term
@@ -29,7 +34,9 @@ export class App extends Component {
             // className ui container, gives the div a left and right margins
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
-                I have {this.state.videos.length} videos.
+                {/* videos prop allows the state property { videos: [] } array to be
+                passed down into the VideoList.js component */}
+                <VideoList videos={this.state.videos}/>
             </div>
         )
     }
