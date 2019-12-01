@@ -9,7 +9,7 @@ import VideoList from '../components/VideoList';
 // 2) in the public/index.html I linked the Semantic UI CDN
 export class App extends Component {
     // Initializing state
-    state = { videos: [] }; //
+    state = { videos: [], selectedVideo: null };
 
     // Callback method anytime someone submits the SearchBar <form>
     // this allows the data to be passed to SearchBar.js to the 
@@ -29,14 +29,20 @@ export class App extends Component {
         this.setState({ videos: response.data.items })
     }
 
+    onVideoSelect = video => {
+        console.log('From the app!', video)
+    }
+
     render() {
         return (
             // className ui container, gives the div a left and right margins
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
-                {/* videos prop allows the state property { videos: [] } array to be
+                {/* 1. videos prop allows the state property { videos: [] } array to be
                 passed down into the VideoList.js component */}
-                <VideoList videos={this.state.videos}/>
+                {/* 2. onVideoSelect prop allows the state property { selectedVideo: null }
+                to be passed down into the VideoList.js component */}
+                <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect} />
             </div>
         )
     }
