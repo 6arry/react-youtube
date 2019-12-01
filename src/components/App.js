@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
 import VideoList from '../components/VideoList';
+import VideoDetail from '../components/VideoDetail';
 
 // I made this a "class" based component because it is going to contain
 // All or most of the state of the app
@@ -29,8 +30,9 @@ export class App extends Component {
         this.setState({ videos: response.data.items })
     }
 
-    onVideoSelect = video => {
-        console.log('From the app!', video)
+    onVideoSelect = ({ video }) => {
+        // console.log('From the app!', video)
+        this.setState({ selectedVideo: video })
     }
 
     render() {
@@ -38,10 +40,12 @@ export class App extends Component {
             // className ui container, gives the div a left and right margins
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
+                {/* video prop allows the state property { selectedVideo: null } to be
+                passed down to a child component*/}
+                <VideoDetail video={this.state.selectedVideo} />
                 {/* 1. videos prop allows the state property { videos: [] } array to be
                 passed down into the VideoList.js component */}
-                {/* 2. onVideoSelect prop allows the state property { selectedVideo: null }
-                to be passed down into the VideoList.js component */}
+                {/* 2. onVideoSelect prop allows the callback method to be passed down into the VideoList.js component */}
                 <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect} />
             </div>
         )
